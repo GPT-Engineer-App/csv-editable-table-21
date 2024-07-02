@@ -51,6 +51,7 @@ const Index = () => {
     const csv = Papa.unparse(csvData, {
       quotes: false, // Preserve original format without converting dates
       skipEmptyLines: true,
+      columns: headers, // Ensure headers are included in the CSV
     });
     const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
     saveAs(blob, "edited.csv");
