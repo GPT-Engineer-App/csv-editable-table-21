@@ -48,7 +48,10 @@ const Index = () => {
   };
 
   const handleDownload = () => {
-    const csv = Papa.unparse(csvData);
+    const csv = Papa.unparse(csvData, {
+      quotes: false, // Preserve original format without converting dates
+      skipEmptyLines: true,
+    });
     const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
     saveAs(blob, "edited.csv");
   };
