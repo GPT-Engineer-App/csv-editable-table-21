@@ -49,7 +49,7 @@ const Index = () => {
 
   const handleDownload = () => {
     const csv = Papa.unparse(csvData);
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
     saveAs(blob, "edited.csv");
   };
 
